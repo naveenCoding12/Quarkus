@@ -98,4 +98,10 @@ public class StudentService {
     return (List<Student>) studentRepo.findById(id);
 
   }
+
+  public Response getByUserName(String userName) {
+    Student student=studentRepo.findByUserName(userName);
+    return Response.ok(student).build();
+
+  }
 }

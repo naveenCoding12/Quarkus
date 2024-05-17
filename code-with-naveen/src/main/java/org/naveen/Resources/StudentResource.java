@@ -6,6 +6,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
+import org.hibernate.annotations.Fetch;
 import org.naveen.Dto.StudentVo;
 import org.naveen.Entity.Student;
 import org.naveen.Service.StudentService;
@@ -63,5 +64,14 @@ public class StudentResource {
 
   public String deleteStudent(@PathParam("id") long id){
     return studentService.deleteStudent(id);
+  }
+
+
+  @GET
+  @Path("/getByUserName/{userName}")
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.APPLICATION_JSON)
+  public Response getUserName(@PathParam("userName") String userName){
+        return  studentService.getByUserName(userName);
   }
 }
